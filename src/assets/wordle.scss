@@ -1,0 +1,128 @@
+$right: rgb(96, 174, 148);
+$wrong: rgb(106, 103, 103);
+$misplaced: rgb(242, 173, 45);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  margin: 0 auto;
+  padding: 10px 100px;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    padding: 0.1em;
+    border: none;
+    background-color: transparent;
+    font-size: 1.5em;
+  }
+
+  button:hover {
+    transition: 2ms ease-in;
+    transform: scale(1.5);
+    background-color: rgb(96, 174, 148);
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 10px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-top: 2em;
+}
+
+.gameContainer {
+  margin: 0 auto;
+  padding: 2em;
+  width: 30vw;
+  height: 50vh;
+
+  display: grid;
+  grid-template-columns: minmax(60px, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+
+  gap: 10px;
+
+  .row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+
+    .tile {
+      border: 1px solid gray;
+      border-radius: 3px;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+
+      
+    }
+  }
+}
+
+.keyboard {
+  margin: 2em;
+  display: grid;
+  grid-template-columns: repeat(20, minmax(auto, 2em));
+  grid-auto-rows: 3em;
+  gap: 0.25em;
+  justify-content: center;
+
+  .key {
+    grid-column: span 2;
+    border: none;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(96, 174, 148);
+  }
+
+  .return {
+    grid-column: span 3;
+  }
+
+  .backspace {
+    grid-column: span 3;
+  }
+
+  .key:hover {
+    background-color: rgb(68, 132, 110);
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    display: flex;
+    padding: 10px 10px;
+    justify-content: space-between;
+
+    .nav {
+      gap: 5px;
+    }
+  }
+
+  .gameContainer {
+    padding: 10px 40px;
+    margin: 0 auto;
+    width: 95vw;
+    height: 60vh;
+  }
+
+  .keyboard {
+   
+  }
+}
