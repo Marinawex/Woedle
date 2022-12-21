@@ -3,6 +3,6 @@
 export function Login() {
 
     return(
-        <div>Im login form</div>
+        <div>Im a login form</div>
     )
 }

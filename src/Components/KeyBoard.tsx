@@ -1,46 +1,65 @@
-
-
 export function KeyBoard() {
+  const keys: string[] = [
+    "Q",
+    "W",
+    "E",
+    "R",
+    "T",
+    "Y",
+    "U",
+    "I",
+    "O",
+    "P",
+    "",
+    "A",
+    "S",
+    "D",
+    "F",
+    "G",
+    "H",
+    "J",
+    "K",
+    "L",
+    "",
+    "key backspace",
+    "Z",
+    "X",
+    "C",
+    "V",
+    "B",
+    "N",
+    "M",
+    "key return",
+  ];
+  const backspace = <i className="bi bi-backspace"></i>;
+  const enter = <i className="bi bi-arrow-return-left"></i>;
 
-    return(
-        <div className="keyboard">
-        <button className="key">Q</button>
-        <button className="key">W</button>
-        <button className="key">E</button>
-        <button className="key">R</button>
-        <button className="key">T</button>
-        <button className="key">Y</button>
-        <button className="key">U</button>
-        <button className="key">I</button>
-        <button className="key">O</button>
-        <button className="key">P</button>
-        <div></div>
-
-        <button className="key">A</button>
-        <button className="key">S</button>
-        <button className="key">D</button>
-        <button className="key">F</button>
-        <button className="key">G</button>
-        <button className="key">H</button>
-        <button className="key">J</button>
-        <button className="key">K</button>
-        <button className="key">L</button>
-        <div></div>
-
-        <button className="key backspace">
-          <i className="bi bi-backspace"></i>
-        </button>
-
-        <button className="key">Z</button>
-        <button className="key">X</button>
-        <button className="key">C</button>
-        <button className="key">V</button>
-        <button className="key">B</button>
-        <button className="key">N</button>
-        <button className="key">M</button>
-        <button className="key return">
-          <i className="bi bi-arrow-return-left"></i>
-        </button>
-      </div>
-    )
+  return (
+    <div className="keyboard">
+      {keys.map((key, index) =>
+        key ? (
+          <button
+            key={key}
+            className={
+              key === "key backspace"
+                ? "key backspace"
+                : "key" && key === "key return"
+                ? "key return"
+                : "key"
+            }
+            value={key}
+            onClick={(event) => console.log(event.target.value)}
+          >
+            {key === "key backspace"
+              ? backspace
+              : key && key === "key return"
+              ? enter
+              : key}
+          </button>
+        ) : (
+          <div key={index}></div>
+        )
+      )}
+    </div>
+  );
 }
