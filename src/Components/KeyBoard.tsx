@@ -1,4 +1,21 @@
+import { useContext } from "react";
+import { GameContext } from "../Providers/game-context";
+
 export function KeyBoard() {
+
+  const {addLetter, checkWord, deleteLetter} = useContext(GameContext)
+
+
+  const handleKeyDown = (event) => {
+    if(event === 'key backspace') {
+      deleteLetter()
+    } else if(event === 'key return'){
+      checkWord()
+    }else{
+      addLetter(event)
+    }
+
+  }
   const keys: string[] = [
     "Q",
     "W",
@@ -48,7 +65,7 @@ export function KeyBoard() {
                 : "key"
             }
             value={key}
-            onClick={(event) => console.log(event.target.value)}
+            onClick={(event) => handleKeyDown(event.target.value)}
           >
             {key === "key backspace"
               ? backspace

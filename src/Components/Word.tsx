@@ -1,55 +1,52 @@
-import React, { useEffect, useRef, useState } from "react";
-interface BoardDetails {
-  row: string;
-  board: string[][];
-}
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { GameContext } from "../Providers/game-context";
 
-let currentTileIndex: number = 0;
-export function Word({ row, board, onSetTile }: BoardDetails) {
-  const [tile, setTile] = useState<string[]>(board[0]);
+
+
+export function Word({ row }) {
+
+  const { word, activeTileIndex, setActiveTileIndex, addLetter, colorLetters} = useContext(GameContext)
+  const color = colorLetters()
+
   const tileRef = useRef<HTMLInputElement>(null);
-  const [activeTileIndex, setActiveTileIndex] = useState<number>(0);
+  
 
   function handleOnChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    const value = event.target.value;
-    const newTile: string[] = [...tile];
-    newTile[currentTileIndex] = value.substring(value.length - 1);
-    if (!value) setActiveTileIndex(currentTileIndex - 1);
-    else setActiveTileIndex(currentTileIndex + 1);
-
-    setTile(newTile);
-
-    // console.log( value.substring(value.length-1))
+    console.log('hu')
   }
 
   function handleKeyDown(
-    event: React.KeyboardEvent<HTMLInputElement>,
-    index: number
+    event: React.KeyboardEvent<HTMLInputElement>
+
   ) {
-    currentTileIndex = index;
-    if (event.key === "Backspace") setActiveTileIndex(currentTileIndex - 1);
-    if (currentTileIndex === 4) console.log('Done');
+    
+    addLetter(event.target.value);
+   
+    console.log(event.key)
   }
 
-  console.log(tile);
+  useEffect(() => {
+    document.addEventListener('keydown',(event)=>handleKeyDown(event))
+  },[])
+
   useEffect(() => {
     tileRef.current?.focus();
   }, [activeTileIndex]);
 
-  console.log(tile);
-  console.log(board);
   return (
     <div className={row}>
-      {tile.map((_, index) => {
+      {word.map((tile:string, index:number) => {
         return (
           <input
             type="text"
-            className="tile"
-            ref={index === activeTileIndex ? tileRef : null}
+            className={`tile ${color}`}
+
             key={index}
+            value={tile}
+           ref={index === activeTileIndex ? tileRef : null}
+            onKeyDown={handleKeyDown}
             onChange={handleOnChange}
-            onKeyDown={(event) => handleKeyDown(event, index)}
-            value={tile[index]}
+           
           />
         );
       })}

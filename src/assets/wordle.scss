@@ -1,3 +1,5 @@
+
+
 $right: rgb(96, 174, 148);
 $wrong: rgb(106, 103, 103);
 $misplaced: rgb(242, 173, 45);
@@ -68,8 +70,21 @@ $misplaced: rgb(242, 173, 45);
       height: 100%;
       width: 100%;
       text-align: center;
+    }
 
-      
+     .overlayRight{
+      border:  none;
+      background-color: $right;
+    }
+
+     .overlayMisplaced{
+      border:  none;
+      background-color: $misplaced;
+    }
+
+     .overlayWrong{
+      border:  none;
+      background-color: $wrong;
     }
   }
 }
@@ -123,6 +138,125 @@ $misplaced: rgb(242, 173, 45);
   }
 
   .keyboard {
-   
   }
+}
+
+.modalContainer {
+  max-width: 600px;
+  max-height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  background-color: white;
+  box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.75);
+  border-radius: 3px;
+
+  p{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+
+  #rowMod{
+    display: flex;
+  }
+
+  .modHeader{
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 0;
+    line-height: 30px;
+    text-transform: none;
+    text-align: left;
+    margin-bottom: 4px;
+    margin-top: 29px;
+    display: block;
+
+  }
+
+  .modSubHeader{
+    display: flex;
+
+  }
+
+  .modList{
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
+  }
+
+
+  #pMod{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+
+  
+
+
+
+
+}
+.modal {
+  width: 100px;
+  padding: 1.5rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.closeBtn {
+  position: fixed;
+  top: 8px;
+  right: 8px;
+}
+
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #0062cc;
+  border-color: #005cbf;
 }

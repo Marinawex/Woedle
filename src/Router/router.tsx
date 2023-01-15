@@ -6,6 +6,7 @@ import {
   import ErrorPage from '../Pages/Error-page';
   import App from "../App";
   import { Login } from "../Pages/Login";
+import { Welcome } from "../Pages/Welcome";
   
   export const router = createBrowserRouter([
     {
@@ -14,13 +15,15 @@ import {
       errorElement:<ErrorPage/>,
       children: [
         {
-          path: "/wordle",
-          element: <Game />,
+          path: "/",
+          element: <Welcome />,
         },
+    
         {
-            path: "/login",
-            element: <Login />,
+            path: "/game",
+            element: <Game />,
           },
+         
       ],
     
   
