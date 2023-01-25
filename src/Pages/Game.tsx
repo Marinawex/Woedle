@@ -1,7 +1,7 @@
-import { useContext } from "react";
-import { Board } from "../Components/Board";
+
 import { KeyBoard } from "../Components/KeyBoard";
 import {  TopBar } from "../Components/TopBar";
+import { Word } from "../Components/Word";
 
 import { useGame } from "../Hooks/useGame";
 import { GameContext } from "../Providers/game-context";
@@ -14,9 +14,9 @@ export function Game() {
       <TopBar />
       <hr />
       <div className="container">
-        <Board />
+        <Word />
         <KeyBoard />
-      </div>
+        </div>
       </GameContext.Provider>
     </>
   );

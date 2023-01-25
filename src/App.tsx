@@ -1,15 +1,8 @@
 import { useState } from "react"
 import { Outlet } from "react-router-dom"
-import { Board } from "./Components/Board"
-import { KeyBoard } from "./Components/KeyBoard"
-import { Game } from "./Pages/game"
-import { Welcome } from "./Pages/Welcome"
-import { AuthContext } from "./Providers/auth-context"
+import { AuthContext, user } from "./Providers/auth-context"
 
-export interface user {
-  email: string;
-  name: string;
-}
+
 
 
 function App() {

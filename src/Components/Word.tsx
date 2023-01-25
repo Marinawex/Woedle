@@ -1,55 +1,24 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import  { useContext, useEffect, useRef, useState } from "react";
 import { GameContext } from "../Providers/game-context";
+import { Tile } from "./tile";
 
 
 
-export function Word({ row }) {
-
-  const { word, activeTileIndex, setActiveTileIndex, addLetter, colorLetters} = useContext(GameContext)
-  const color = colorLetters()
-
-  const tileRef = useRef<HTMLInputElement>(null);
+export function Word() {
+  const {words, activeTileIndex , activeWordIndex} = useContext(GameContext);
+  const className = 'tile';
   
-
-  function handleOnChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    console.log('hu')
-  }
-
-  function handleKeyDown(
-    event: React.KeyboardEvent<HTMLInputElement>
-
-  ) {
-    
-    addLetter(event.target.value);
-   
-    console.log(event.key)
-  }
-
-  useEffect(() => {
-    document.addEventListener('keydown',(event)=>handleKeyDown(event))
-  },[])
-
-  useEffect(() => {
-    tileRef.current?.focus();
-  }, [activeTileIndex]);
-
   return (
-    <div className={row}>
-      {word.map((tile:string, index:number) => {
-        return (
-          <input
-            type="text"
-            className={`tile ${color}`}
-
-            key={index}
-            value={tile}
-           ref={index === activeTileIndex ? tileRef : null}
-            onKeyDown={handleKeyDown}
-            onChange={handleOnChange}
-           
-          />
-        );
-      })}
-    </div>
-  );
+    <div className="gameContainer" >
+    {words.map((word, wordIndex) => (
+      <div key={wordIndex} className="row">
+        {word.map((letter, letterIndex) => (
+          <Tile key={letterIndex} letter={letter} className={className} letterIndex={letterIndex} wordIndex={wordIndex} />
+        ))}
+      </div>
+    ))}
+  </div>
+);
+  
+ 
 }
