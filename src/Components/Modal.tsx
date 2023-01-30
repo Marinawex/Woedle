@@ -1,6 +1,7 @@
-import  { useEffect } from "react";
+import { useEffect } from "react";
+import { HelpModalProps } from "../types/types";
 
-export function Modal({ onClose }) {
+export function Modal({ onClose }: HelpModalProps) {
   useEffect(() => {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
@@ -23,37 +24,67 @@ export function Modal({ onClose }) {
             </li>
           </ul>
           <p id="pMod">
-              <b>Examples</b>
+            <b>Examples</b>
           </p>
           <div id="rowMod">
-              <div className='letter' id="greenLet">J</div>
-              <div className='letter' id="modalLet">O</div>
-              <div className='letter' id="modalLet">K</div>
-              <div className='letter' id="modalLet">E</div>
-              <div className='letter' id="modalLet">S</div>
+            <div className="letter" id="greenLet">
+              J
+            </div>
+            <div className="letter" id="modalLet">
+              O
+            </div>
+            <div className="letter" id="modalLet">
+              K
+            </div>
+            <div className="letter" id="modalLet">
+              E
+            </div>
+            <div className="letter" id="modalLet">
+              S
+            </div>
           </div>
           <p id="pMod">
-              <b>J</b> is in the word and in the right spot.
+            <b>J</b> is in the word and in the right spot.
           </p>
           <div id="rowMod">
-              <div className='letter' id="modalLet">F</div>
-              <div className='letter' id="modalLet">U</div>
-              <div className='letter' id="yellowLet">Z</div>
-              <div className='letter' id="modalLet">Z</div>
-              <div className='letter' id="modalLet">Y</div>
+            <div className="letter" id="modalLet">
+              F
+            </div>
+            <div className="letter" id="modalLet">
+              U
+            </div>
+            <div className="letter" id="yellowLet">
+              Z
+            </div>
+            <div className="letter" id="modalLet">
+              Z
+            </div>
+            <div className="letter" id="modalLet">
+              Y
+            </div>
           </div>
           <p id="pMod">
-              <b>Z</b> is in the word but not in the right spot.
+            <b>Z</b> is in the word but not in the right spot.
           </p>
           <div id="rowMod">
-              <div className='letter' id="modalLet">M</div>
-              <div className='letter' id="modalLet">E</div>
-              <div className='letter' id="modalLet">L</div>
-              <div className='letter' id="grayLet">O</div>
-              <div className='letter' id="modalLet">N</div>
+            <div className="letter" id="grayLet">
+              M
+            </div>
+            <div className="letter" id="modalLet">
+              E
+            </div>
+            <div className="letter" id="modalLet">
+              L
+            </div>
+            <div className="letter" id="modalLet">
+              O
+            </div>
+            <div className="letter" id="modalLet">
+              N
+            </div>
           </div>
           <p id="pMod">
-              <b>O</b> is not in the word in any spot.
+            <b>M</b> is not in the word in any spot.
           </p>
           <button className="closeBtn" onClick={onClose}>
             x

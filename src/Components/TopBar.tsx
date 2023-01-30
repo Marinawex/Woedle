@@ -33,29 +33,23 @@ export function TopBar() {
     <>
       <header className="header">
         {!currentUser ? (
-          <button className="user" onClick={() => setIsLogInOpen(!isLogInOpen)}>
-            <i className="bi bi-person">sign-in</i>
+          <button
+            className="LoginBtn"
+            onClick={() => setIsLogInOpen(!isLogInOpen)}
+          >
+            Login
           </button>
         ) : (
-        
-            
-            <button className="user" onClick={handleLogOut}>
-              <p>{ userName()}</p>
-              <i className="bi bi-person">sign-out</i>
-            </button>
-         
+          <button className="LoginBtn" onClick={handleLogOut}>
+            <p>{userName()}</p>
+            Logout
+          </button>
         )}
 
-        <h1>wordle</h1>
+        <h1>WORDLE</h1>
         <nav className="nav">
           <button onClick={() => setIsOpen(!isOpen)}>
             <i className="bi bi-question"></i>
-          </button>
-          <button className="sta">
-            <i className="bi bi-bar-chart"></i>
-          </button>
-          <button className="settings">
-            <i className="bi bi-gear"></i>
           </button>
         </nav>
         {logInModal}

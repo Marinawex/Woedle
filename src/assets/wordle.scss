@@ -1,8 +1,6 @@
-
-
 $right: rgb(96, 174, 148);
-$wrong: rgb(106, 103, 103);
-$misplaced: rgb(242, 173, 45);
+$wrong: rgb(114, 114, 114);
+$misplaced: rgb(225, 156, 82);
 
 * {
   box-sizing: border-box;
@@ -11,23 +9,22 @@ $misplaced: rgb(242, 173, 45);
   font-family: Arial, Helvetica, sans-serif;
 }
 
+button {
+  padding: 0.1em;
+  border: none;
+  background-color: transparent;
+  font-size: 1.5em;
+}
+
 .header {
-  margin: 0 auto;
   padding: 10px 100px;
   display: flex;
   justify-content: space-between;
-
-  button {
-    padding: 0.1em;
-    border: none;
-    background-color: transparent;
-    font-size: 1.5em;
-  }
+  background-color: rgba(96, 174, 148, 0.2);
 
   button:hover {
-    transition: 2ms ease-in;
-    transform: scale(1.5);
-    background-color: rgb(96, 174, 148);
+    transition: 0.2ms ease-in-out;
+    transform: scale(1.3);
   }
 
   .nav {
@@ -35,6 +32,25 @@ $misplaced: rgb(242, 173, 45);
     justify-content: space-between;
 
     gap: 10px;
+
+    .bi-question {
+      font-size: 1.5em;
+    }
+  }
+
+  .LoginBtn {
+    background: rgba(169, 169, 169, 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: background 0.2s ease-in-out;
+    &:hover {
+      transform: scale(1);
+      cursor: default;
+      opacity: 1;
+    }
   }
 }
 
@@ -54,7 +70,7 @@ $misplaced: rgb(242, 173, 45);
   grid-template-columns: minmax(60px, 1fr);
   grid-template-rows: repeat(6, 1fr);
 
-  gap: 10px;
+  gap: 5px;
 
   .row {
     display: grid;
@@ -62,31 +78,36 @@ $misplaced: rgb(242, 173, 45);
 
     justify-content: space-evenly;
     align-items: center;
-    gap: 10px;
+    // gap: 5px;
 
     .tile {
-      border: 1px solid gray;
+      border: 1px solid rgb(169, 169, 169);
       border-radius: 3px;
       height: 100%;
-      width: 100%;
+      width: 90%;
       text-align: center;
+      font-size: 1.7rem;
     }
 
-     #overlayRight{
-      border:  none;
-      background-color: $right;
+    #overlayWrong {
+      border: none;
+      background-color: $wrong;
     }
 
-     #overlayMisplaced{
-      border:  none;
+    #overlayMisplaced {
+      border: none;
       background-color: $misplaced;
     }
 
-     #overlayWrong{
-      border:  none;
-      background-color: $wrong;
+    #overlayRight {
+      border: none;
+      background-color: $right !important;
     }
   }
+}
+
+input:focus {
+  outline-color: $wrong;
 }
 
 .keyboard {
@@ -103,7 +124,23 @@ $misplaced: rgb(242, 173, 45);
     border-radius: 3px;
     justify-content: center;
     align-items: center;
-    background-color: rgb(96, 174, 148);
+    background-color: rgb(169, 169, 169);
+    font-size: 1em;
+  }
+
+  #overlayWrong {
+    border: none;
+    background-color: $wrong;
+  }
+
+  #overlayMisplaced {
+    border: none;
+    background-color: $misplaced;
+  }
+
+  #overlayRight {
+    border: none;
+    background-color: $right !important;
   }
 
   .return {
@@ -115,8 +152,258 @@ $misplaced: rgb(242, 173, 45);
   }
 
   .key:hover {
-    background-color: rgb(68, 132, 110);
+    background-color: rgb(130, 130, 130);
   }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalContainer {
+  max-width: 600px;
+  max-height: 90%;
+  width: 90%;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  background-color: white;
+  box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.75);
+  border-radius: 3px;
+  flex-direction: column;
+}
+
+.modal {
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+
+  .S {
+    text-align: center;
+  }
+}
+
+.modHeader {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.modSubHeader {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.modList {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.modList li {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+#pMod {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+#rowMod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.letter {
+  font-size: 2rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid gray;
+  border-radius: 3px;
+  height: 90%;
+  width: 90%;
+  text-align: center;
+}
+
+#greenLet {
+  background-color: $right;
+  color: white;
+}
+
+#yellowLet {
+  background-color: $misplaced;
+  color: white;
+}
+
+#grayLet {
+  background-color: $wrong;
+  color: white;
+}
+
+.closeBtn {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+}
+
+.LogInModalContainer {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  height: 45%;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.75);
+  border-radius: 3px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.btn-primary {
+  width: 40%;
+  background: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  font-size: 1.5rem;
+  text-decoration: none;
+  opacity: 0.95;
+  transition: background 0.2s ease-in-out;
+  &:hover {
+    opacity: 1;
+    cursor: default;
+  }
+}
+
+.formValues {
+  margin-bottom: 1.7rem;
+}
+.InputValue {
+  height: 3rem;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  border: none;
+  background-color: rgb(234, 234, 234);
+}
+
+.formLabel,
+.InputValue {
+  flex: 1;
+}
+
+.h1Login {
+  margin-bottom: 1.5rem;
+}
+
+.welcomecContainer {
+  margin-top: 4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .welcomeH1 {
+    margin: 2rem;
+    font-size: 3rem;
+    color: rgba(0, 0, 0, 0.5);
+    line-height: 2em;
+    font-family: serif;
+  }
+
+  .welcomeBtn {
+    background-color: $right;
+    color: white;
+    padding: 12px 20px;
+    margin-right: 3rem;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 2rem;
+  }
+
+  .welcomeBtn:hover {
+    opacity: 1;
+  }
+}
+
+.rotate span {
+  font-size: 8rem;
+  color: rgba(0, 0, 0, 0.9);
+  display: inline-flex;
+  animation: rotate 3s;
+
+  letter-spacing: 0.1em;
+
+  &:hover {
+    animation: rotate 2s infinite;
+    cursor: default;
+  }
+}
+@keyframes rotate {
+  0%,
+  75% {
+    transform: rotateY(360deg);
+  }
+}
+.nine span:nth-of-type(1) {
+  animation-delay: 0.2s;
+}
+.nine span:nth-of-type(2) {
+  animation-delay: 0.4s;
+}
+.nine span:nth-of-type(3) {
+  animation-delay: 0.6s;
+}
+.nine span:nth-of-type(4) {
+  animation-delay: 0.8s;
+}
+.nine span:nth-of-type(5) {
+  animation-delay: 1s;
+}
+.nine span:nth-of-type(6) {
+  animation-delay: 1.2s;
+}
+.nine span:nth-of-type(7) {
+  animation-delay: 1.4s;
+}
+
+.wordBtn {
+  background-color: $right;
+  color: white;
+  padding: 12px 20px;
+  margin-right: 3rem;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  text-decoration: none;
+  border-radius: 3px;
+  font-size: 1rem;
+}
+
+.wordBtn:hover {
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
@@ -137,128 +424,31 @@ $misplaced: rgb(242, 173, 45);
     height: 60vh;
   }
 
-
-}
-
-.modalContainer {
-  max-width: 600px;
-  max-height: 90%;
-  width: 100%;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  background-color: white;
-  box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.75);
-  border-radius: 3px;
-
-  p{
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-  }
-
-  #rowMod{
+  .welcomecContainer {
+    margin-top: 0.5em;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .rotate span {
+    font-size: 3.5rem;
   }
 
-  .modHeader{
-    // font-weight: 700;
-    // font-size: 28px;
-    // letter-spacing: 0;
-    // line-height: 30px;
-    // text-transform: none;
-    // text-align: left;
-    // margin-bottom: 4px;
-    // margin-top: 29px;
-    // display: block;
+  .welcomeH1 {
+    font-size: 0.5rem;
+    font-family: serif;
+    line-height: 0.5em;
+    margin: 0.5em;
+  }
+
+  .welcomeBtnContainer {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
+    .welcomeBtn {
+      margin: 0.5rem;
+      font-size: 1rem;
+    }
   }
-
-  .modSubHeader{
-    display: flex;
-
-  }
-
-  .modList{
-    display: flex;
-
-    
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-
-  }
-
-
-  #pMod{
-    display: flex;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-  }
-
-  
-
-
-
-
-}
-.modal {
-  width: 100px;
-  padding: 1.5rem;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-
-.closeBtn {
-  position: fixed;
-  top: 8px;
-  right: 8px;
-}
-
-
-.btn-primary {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
-  text-decoration: none;
-}
-
-.btn-primary:hover {
-  color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
-}
-
-.btn-primary:focus, .btn-primary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-}
-
-.btn-primary.disabled, .btn-primary:disabled {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
-.show > .btn-primary.dropdown-toggle {
-  color: #fff;
-  background-color: #0062cc;
-  border-color: #005cbf;
 }

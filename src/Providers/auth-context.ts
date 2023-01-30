@@ -1,16 +1,7 @@
-import {createContext} from "react";
-
-export interface user {
-    email: string;
-    name: string;
-  }
-
-interface AuthContextType {
-    currentUser: user | null;
-    setCurrentUser: (user: user | null) => void;
-}
+import { createContext } from "react";
+import { AuthContextType } from "../types/types";
 
 export const AuthContext = createContext<AuthContextType>({
-    currentUser: null,
-    setCurrentUser: () => {}
+  currentUser: null,
+  setCurrentUser: () => {},
 });

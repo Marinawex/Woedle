@@ -1,25 +1,14 @@
-import { useEffect, useState, useContext, useRef } from "react";
-import { json, Link } from "react-router-dom";
+import { useEffect, useContext, useRef } from "react";
+import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { AuthContext } from "../Providers/auth-context";
-import { user } from "../App";
+import { LoginProps } from "../types/types";
 
-
-
-interface FormValues {
-  email: string;
-  name: string;
-}
-
-export function LogIn({ onLogInClose }) {
-  const [FormValues, setFormValues] = useState<FormValues>({
-    email: "",
-    name: "",
-  });
+export function LogIn({ onLogInClose }: LoginProps) {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
-  const emailInputRef = useRef<HTMLInputElement | null>()
-  const nameInputRef = useRef<HTMLInputElement | null>()
+  const emailInputRef = useRef<any>();
+  const nameInputRef = useRef<any>();
 
   useEffect(() => {
     document.addEventListener("keydown", (e) => {
@@ -35,55 +24,60 @@ export function LogIn({ onLogInClose }) {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
-    // validate form data and submit
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-
-
-    setCurrentUser((prevFormValues:user) => ({
-      ...prevFormValues,
+    const newUserData = {
+      ...currentUser,
       [event.target.name]: event.target.value,
-    }));
+    };
+    setCurrentUser(newUserData);
   };
 
   return (
     <Form>
       <div className="overlay">
-        <div className="modalContainer">
+        <div className="LogInModalContainer">
           <div className="modal">
-            <Form.Group
-              className="mb-3"
-              controlId="formBasicEmail"
-              onSubmit={handleSubmit}
-            >
+            <div className="formContainer">
+              <h1 className="h1Login">Login</h1>
+              <Form.Group className="formValues" onSubmit={handleSubmit}>
                 <button className="closeBtn" onClick={onLogInClose}>
-            x
-          </button>
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                name="email"
-                placeholder="Enter email"
-                ref={emailInputRef}
-                onChange={handleChange}
-              />
-            </Form.Group>
+                  x
+                </button>
+                <Form.Label className="formLabel"></Form.Label>
+                <Form.Control
+                  className="InputValue"
+                  type="email"
+                  name="email"
+                  placeholder="Enter email"
+                  ref={emailInputRef}
+                  onChange={handleChange}
+                />
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                name="name"
-                placeholder="your name"
-                ref={nameInputRef}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Button variant="primary" type="submit" >
-              <Link  className="btn-primary" to={`/game`} onClick={onLogInClose}>Submit</Link>
-            </Button>
+              <Form.Group className="formValues">
+                <Form.Label className="formLabel"></Form.Label>
+                <Form.Control
+                  className="InputValue"
+                  type="text"
+                  name="name"
+                  placeholder="your name"
+                  ref={nameInputRef}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Button type="submit">
+                <Link
+                  className="btn-primary "
+                  type="text"
+                  to={`/game`}
+                  onClick={onLogInClose}
+                >
+                  Login
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,42 +1,16 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { GameContext } from "../Providers/game-context";
-interface TileProps {
-  letter: string;
-  className: string;
-  letterIndex: number;
-  wordIndex: number;
-}
+import { TileProps } from "../types/types";
 
-export function Tile({ letter, className, letterIndex, wordIndex }: TileProps) {
-  const {
-    activeTileIndex,
-    activeWordIndex,
-    addLetter,
-    deleteLetter,
-    checkWord,
-  } = useContext(GameContext);
+export function Tile({
+  letter,
+  className,
+  letterIndex,
+  wordIndex,
+  id,
+}: TileProps) {
+  const { activeTileIndex, activeWordIndex } = useContext(GameContext);
   const tileRef = useRef<HTMLInputElement>(null);
-  const isLetter = (letter: string) => {
-    /^[a-z]$/.test(letter.toLowerCase());
-  };
-
-  function handleOnChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    // event.preventDefault();
-
-    addLetter(event.target.value.toUpperCase());
-  }
-
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>): void {
-    // if(!isLetter(event.key)){
-    //     event.preventDefault()
-    // }
-
-    if (event.key === "Backspace") {
-      deleteLetter();
-    } else if (event.key === "Enter") {
-      checkWord();
-    }
-  }
 
   useEffect(() => {
     activeWordIndex;
@@ -46,15 +20,15 @@ export function Tile({ letter, className, letterIndex, wordIndex }: TileProps) {
   return (
     <input
       type="text"
+      readOnly={true}
       className={className}
+      id={id}
       defaultValue={letter}
       ref={
         letterIndex === activeTileIndex && wordIndex === activeWordIndex
           ? tileRef
           : null
       }
-      onKeyDown={handleKeyDown}
-      onChange={handleOnChange}
     />
   );
 }
