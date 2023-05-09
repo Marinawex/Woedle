@@ -66,15 +66,8 @@ export interface IUseGame {
   setActiveWordIndex: (index: number) => void;
   addLetter: (letter: string) => void;
   deleteLetter: () => void;
-  checkWord: (
-    keys: Array<Key>,
-    setKeys: React.Dispatch<React.SetStateAction<Key[]>>
-  ) => void;
+  checkWord: (keys: Array<Key>, setKeys: React.Dispatch<React.SetStateAction<Key[]>>) => void;
   addStyleToTheBoard: (guess: object[]) => void;
-  addStyleToTheKeyBoard: (
-    guess: object[],
-    keys: Key[],
-    setKeys: React.Dispatch<React.SetStateAction<Key[]>>
-  ) => void;
+  addStyleToTheKeyBoard: (guess: object[], keys: Key[], setKeys: React.Dispatch<React.SetStateAction<Key[]>>) => void;
   checkWin: (serverResponse: serverResponse) => void;
 }

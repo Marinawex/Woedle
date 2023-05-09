@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Outlet } from "react-router-dom";
-import { AuthContext, user } from "./Providers/auth-context";
+import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import { AuthContext, user } from './Providers/auth-context';
 
 function App() {
   const [currentUser, setCurrentUser] = useState<user | null>(null);

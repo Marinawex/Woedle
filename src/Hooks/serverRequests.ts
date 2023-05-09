@@ -1,4 +1,4 @@
-const endpoint = 'http://localhost:3333';
+const endpoint = 'https://wordle-server-5qrf.onrender.com';
 
 export const startGame = async () => {
   const res = await fetch(`${endpoint}/getWord`);
