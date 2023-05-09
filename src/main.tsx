@@ -1,4 +1,4 @@
-import "bootstrap";
+// import "bootstrap";
 import ReactDOM from "react-dom/client";
 import "./assets/wordle.scss";
 import { RouterProvider } from "react-router-dom";
