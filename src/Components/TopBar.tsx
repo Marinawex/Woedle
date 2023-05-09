@@ -48,7 +48,7 @@ export function TopBar() {
 
         <h1>WORDLE</h1>
         <nav className="nav">
-          <button onClick={() => setIsOpen(!isOpen)}>
+          <button onClick={() => setIsOpen(!isOpen)} aria-label='open-information'>
             <i className="bi bi-question"></i>
           </button>
         </nav>

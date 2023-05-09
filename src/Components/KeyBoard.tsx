@@ -96,6 +96,7 @@ export function KeyBoard() {
                 ? "overlayWrong"
                 : undefined
             }
+            aria-label={ key.key === "key backspace" ? 'delete-letter-button' : 'submit-word-button'}
             value={key.key}
             onClick={() => handleOnClick(key.key)}
           >
