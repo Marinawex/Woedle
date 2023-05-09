@@ -23,6 +23,7 @@ export function Tile({
       readOnly={true}
       className={className}
       id={id}
+      aria-label='letter'
       defaultValue={letter}
       ref={
         letterIndex === activeTileIndex && wordIndex === activeWordIndex
