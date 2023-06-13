@@ -20,6 +20,11 @@ This is a simple word-guessing game built using React and Node Express.
 
 ## Screenshot
 
+<p float="left">
+<img src="./public/%20Wordle-Desktop.png" alt="Desktop Version of my Project" width="400" height="700"/>
+<img src="./public/Wordle.png" alt="Mobile Version of my Project" width="400" height="700"/>
+</p>
+
 
 
 
