@@ -23,8 +23,8 @@ This is a simple word-guessing game built using React and Node Express.
 Desktop Version of my Project
 
 <p float="left">
-<img src="./public/%20Wordle-Desktop.png" alt="Desktop Version of my Project"  height="700" width="400"/>
-<img src="./public/Wordle-how-to-play.png" alt="Desktop Version of my Project"  height="700" width="400"/>
+<img src="./public/%20Wordle-Desktop.png" alt="Desktop Version of my Project"  height="500"/>
+<img src="./public/Wordle-how-to-play.png" alt="Desktop Version of my Project"  height="500" />
 
 </p>
 
